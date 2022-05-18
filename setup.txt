@@ -78,5 +78,8 @@ open localhost:3010 & add prometheus as datasource
 
 
 
+-------------------------------------------------------------------
 
+Curl command to encrypt password 
+curl 'http://192.168.199.11:8153/go/api/admin/encrypt' -u 'goadmin:goadmin' -H 'Accept: application/vnd.go.cd.v1+json' -H 'Content-Type: application/json' -X POST -d '{ "value": "admin%40123" }'
 
