@@ -9,7 +9,7 @@ header = {
 }
 
 for i in range(1,3):
-    URL = f"{config.HOST}/repos/{config.USER_NAME}/{TEMLPATE_NAME}/generate"
+    URL = f"{config.HOST}/api/v1/repos/{config.USER_NAME}/{TEMLPATE_NAME}/generate"
     payload = {
         'name': f'repo-{i}',
         'owner': f'{config.USER_NAME}',
