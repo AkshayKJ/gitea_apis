@@ -13,7 +13,7 @@ for i in range(2, 51):
         "material": {
             "type": "git",
             "attributes": {
-                "url": f"http://192.168.199.1:3000/admin123/{REPO_NAME}.git",
+                "url": f"http://x.x.x.x:3000/admin123/{REPO_NAME}.git",
                 "username": config.USER_NAME,
                 "password": config.PASSWORD,
                 "branch": "master",
