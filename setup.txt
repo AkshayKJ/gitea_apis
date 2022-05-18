@@ -1,0 +1,87 @@
+Install gitea on local using docker-compose
+
+save below file with docker-compose.yaml name
+
+version: "3"
+networks:
+  gitea:
+    external: false
+volumes:
+  gitea:
+    driver: local
+services:
+  server:
+    image: gitea/gitea:1.16.8
+    container_name: gitea
+    restart: always
+    networks:
+      - gitea
+    volumes:
+      - gitea:/data
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+    ports:
+      - "3000:3000"
+      - "222:22"
+
+
+docker-compose up
+Open browser & do the setup
+------------------------------------------------------------------------------------------
+
+Install prometheus on local using docker image
+
+save below file with prometheus.yaml name 
+
+
+global:
+  scrape_interval: 15s # Set the scrape interval to every 15 seconds. Default is every 1 minute.
+  evaluation_interval: 15s # Evaluate rules every 15 seconds. The default is every 1 minute.
+  # scrape_timeout is set to the global default (10s).
+# Alertmanager configuration
+alerting:
+  alertmanagers:
+    - static_configs:
+        - targets:
+          # - alertmanager:9093
+# Load rules once and periodically evaluate them according to the global 'evaluation_interval'.
+rule_files:
+  # - "first_rules.yml"
+  # - "second_rules.yml"
+# A scrape configuration containing exactly one endpoint to scrape:
+# Here it's Prometheus itself.
+scrape_configs:
+  # The job name is added as a label `job=<job_name>` to any timeseries scraped from this config.
+  - job_name: "prometheus"
+
+    # metrics_path defaults to '/metrics'
+    # scheme defaults to 'http'.
+
+    static_configs:
+      - targets: ["localhost:9090"]
+
+  - job_name: go-cd-server-exporter
+    static_configs:
+      - targets: ["192.168.199.11:9100"] #change Ip to Go CD server VM IP
+
+docker run -p 9091:9090 -v pwd-path/prometheus.yaml:/etc/prometheus/prometheus.yml prom/prometheus
+
+open localhost:9091 
+----------------------------------------------------------------------------------------------------
+
+Run a grafana as docker container
+
+docker run -d -p 3010:3000 grafana/grafana-enterprise
+
+open localhost:3010 & add prometheus as
+
+
+
+
+
+
+
+
+
+
+
