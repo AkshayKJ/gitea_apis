@@ -4,7 +4,7 @@ import templates
 import base64
 
 
-for i in range(1, 3):
+for i in range(1, 51):
     FILENAME = f'git-path-material-repo-{i}.gocd.yaml'
     PIPELINE = f'pipeline-repo-{i}'
     REPO_NAME = f'repo-{i}'
@@ -12,23 +12,12 @@ for i in range(1, 3):
 
     raw_content = templates.get_pipeline_config_yaml_git_path(
         PIPELINE, REPO_NAME)
-    payload = {
-        "author": {
-            "email": "sanjayshanmu7@gmail.com",
-            "name": "Shunmugam"
-        },
-        "branch": "master",
-        "committer": {
-            "email": "sanjayshanmu7@gmail.com",
-            "name": "Shunmugam"
-        },
-        "content": "hello",
-        "dates": {
-            "author": "2022-05-18T10:41:08.929Z",
-            "committer": "2022-05-18T10:41:08.929Z"
-        },
-        "message": "add hello",
-        "signoff": True,
+    payload = { 
+        
+        "content": base64.b64encode(raw_content.encode("ascii")).decode("ascii"),
+       
+        "message": f"add {FILENAME}",
+       
     }
     r = requests.post(url=URL, json=payload, headers=config.HEADER)
     print(f"Status code for repo-{i} file create",

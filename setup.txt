@@ -73,12 +73,7 @@ Run a grafana as docker container
 
 docker run -d -p 3010:3000 grafana/grafana-enterprise
 
-open localhost:3010 & add prometheus as
-
-
-
-
-
+open localhost:3010 & add prometheus as datasource
 
 
 
