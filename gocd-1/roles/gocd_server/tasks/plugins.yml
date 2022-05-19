@@ -1,0 +1,21 @@
+- name: Install ldap authorisation plugin
+  become: yes
+  get_url:
+    url: "https://github.com/gocd/gocd-ldap-authorization-plugin/releases/download/v4.0.1-6/gocd-ldap-authorization-plugin-4.0.1-6.jar"
+    checksum: "sha256:ad0518af311b9879835d4f7121aca82e68fbb4fb488bdcf3437e8196413544de"
+    dest: "/data/var-lib-go-server/plugins/external"
+    mode: 0644
+    owner: go
+    group: go
+  notify: "restart gocd server"
+
+- name: Install git path material plugin
+  become: yes
+  get_url:
+    url: "https://github.com/TWChennai/gocd-git-path-material-plugin/releases/download/v2.2.2-229/gocd-git-path-material-plugin-2.2.2-229.jar"
+    checksum: "sha256:a096e0d8f825c2360896dc312aca0588de4ae2df2c8c621d7c16dae9f9b7a5b0"
+    dest: "/data/var-lib-go-server/plugins/external"
+    mode: 0644
+    owner: go
+    group: go
+  notify: "restart gocd server"

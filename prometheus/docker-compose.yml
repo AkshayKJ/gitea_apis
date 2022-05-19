@@ -9,7 +9,13 @@ services:
       - ${PWD}/prometheus/prometheus.yaml:/etc/prometheus/prometheus.yaml
       - prometheus-data:/prometheus
     command: --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yaml
-
+  
+  grafana:
+    image: grafana/grafana-oss
+    depends_on:
+      - prometheus
+    ports:
+      - 3001:3000
 
 volumes:
   prometheus-data:

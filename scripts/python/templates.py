@@ -21,7 +21,7 @@ pipelines:
                     shallow_clone: false
                     path: microservice-1, microservice-2, microservice-3/src/*
                 secure_options:
-                    password: 'AES:LgPVbiy4vxmBPvrzN8ZW0Q==:3rQRePUTLsStfM6ls2IDQg=='
+                    password: 'AES:NCmHpn7BseyBsfqXWzizTQ==:D/JWGpsO7mkGAnO1iEJ6YQ=='
                 destination: {repo_name}
         stages:
             - stagename:
