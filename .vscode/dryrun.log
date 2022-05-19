@@ -1,4 +1,11 @@
+make --dry-run --always-make --keep-going --print-directory
 make: Entering directory `/Users/shunmugamv/Documents/work/repos/gitea_apis'
-docker-compose -f ./gocd/docker-compose.yaml up -d --remove-orphans
+echo "cleaning old certs..."
+rm -rf ./gocd/roles/gocd_agent/gocd.example.com.crt
+rm -rf ./gocd/roles/gocd_agent/gocd.example.com.key
+rm -rf ./gocd/roles/gocd_server/gocd.example.com.crt
+rm -rf ./gocd/roles/gocd_server/gocd.example.com.key
+rm -rf ./gocd/roles/gocd_agent/files/id_rsa
+rm -rf ./gocd/deploy_keys/id_rsa.pub
 make: Leaving directory `/Users/shunmugamv/Documents/work/repos/gitea_apis'
  

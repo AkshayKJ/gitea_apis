@@ -4,7 +4,7 @@ import templates
 import base64
 
 
-for i in range(1, 51):
+for i in range(config.FROM,config.LESS_THAN):
     FILENAME = f'git-path-material-repo-{i}.gocd.yaml'
     PIPELINE = f'pipeline-repo-{i}'
     REPO_NAME = f'repo-{i}'
@@ -20,5 +20,4 @@ for i in range(1, 51):
 
     }
     r = requests.post(url=URL, json=payload, headers=config.HEADER)
-    print(f"Status code for repo-{i} file create",
-          r.status_code, r.json(), URL)
+    print(f"added file '{FILENAME}' to repo-{i}: ", r.status_code)

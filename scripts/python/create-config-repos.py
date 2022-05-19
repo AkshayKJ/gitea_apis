@@ -2,7 +2,7 @@ import requests
 import config
 
 
-for i in range(2, 51):
+for i in range(config.FROM,config.LESS_THAN):
     REPO_NAME = f'repo-{i}'
     URL = f"{config.GOCD_HOST}go/api/admin/config_repos"
     payload = {
@@ -11,7 +11,7 @@ for i in range(2, 51):
         "material": {
             "type": "git",
             "attributes": {
-                "url": f"http://192.168.56.1:3000/admin123/{REPO_NAME}.git",
+                "url": f"{config.GIT_HOST_FROM_VAGRANT}/{config.USER_NAME}/{REPO_NAME}.git",
                 "username": config.USER_NAME,
                 "password": config.PASSWORD,
                 "branch": "master",
@@ -27,5 +27,4 @@ for i in range(2, 51):
         }]
     }
     r = requests.post(url=URL, json=payload, headers=config.GOCD_HEADER)
-    print(f"Status code for Config repo-{i}  create",
-          r.status_code)
+    print(f"create config repo 'repo-{i}': ", r.status_code)

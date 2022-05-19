@@ -1,9 +1,9 @@
 import requests
 import config
 
-TEMLPATE_NAME='sample-template'
+TEMLPATE_NAME='sample-template-repo'
 
-for i in range(1,3):
+for i in range(config.FROM,config.LESS_THAN):
     URL = f"{config.HOST}/api/v1/repos/{config.USER_NAME}/{TEMLPATE_NAME}/generate"
     payload = {
         'name': f'repo-{i}',
@@ -18,4 +18,4 @@ for i in range(1,3):
         'webhooks': True
     }
     r = requests.post(url = URL, json=payload, headers=config.HEADER)
-    print(f"Status code for repo-{i} creation", r.status_code, r.json(), URL, payload)
+    print(f"create repo 'repo-{i}': ", r.status_code)

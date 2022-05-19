@@ -20,6 +20,9 @@ start-gocd:
 stop-gocd:
 	cd gocd && vagrant destroy -f && cd - 
 
+gocd-status:
+	cd gocd && vagrant status && cd - 
+
 start-gittea:
 	docker-compose -f ./gittea/docker-compose.yml up -d --remove-orphans
 stop-gittea:

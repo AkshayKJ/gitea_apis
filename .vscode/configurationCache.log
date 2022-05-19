@@ -1,1 +1,1 @@
-{"buildTargets":["start-gocd","stop-gocd"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
+{"buildTargets":["clean-gocd-setup","init-setup-gocd","start-gittea","start-gocd","start-grafana","start-prom","stop-gittea","stop-gocd","stop-grafana","stop-prom"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

@@ -1,3 +1,5 @@
+import config
+
 def get_pipeline_config_yaml_git_path(pipeline_name, repo_name):
 
     template = f"""format_version: 3
@@ -14,13 +16,13 @@ pipelines:
                 plugin_configuration:
                     id: git-path
                 options:
-                    url: http://192.168.56.1:3000/admin123/{repo_name}.git
-                    username: admin123 # optional
-                    shallow_clone: false # optional
-                    path: 'microservice1'
+                    url: {config.GIT_HOST_FROM_VAGRANT}/{config.USER_NAME}/{repo_name}.git
+                    username: {config.USER_NAME}
+                    shallow_clone: false
+                    path: microservice-1, microservice-2, microservice-3/src/*
                 secure_options:
-                    password: 'AES:TfveGBXGGBzLmxPGeywSPA==:mJ4xmm3cFzxP7UP/5825IQ=='
-                destination: myrepo
+                    password: 'AES:LgPVbiy4vxmBPvrzN8ZW0Q==:3rQRePUTLsStfM6ls2IDQg=='
+                destination: {repo_name}
         stages:
             - stagename:
                 fetch_materials: true
