@@ -11,3 +11,13 @@ start-gittea:
 	docker-compose -f ./gittea/docker-compose.yml up -d --remove-orphans
 stop-gittea:
 	docker-compose -f ./gittea/docker-compose.yml down --remove-orphans
+
+start-prom:
+	docker-compose -f ./prometheus/docker-compose.yml up -d --remove-orphans
+stop-prom:
+	docker-compose -f ./prometheus/docker-compose.yml down --remove-orphans
+
+start-grafana:
+	docker-compose -f ./grafana/docker-compose.yml up -d --remove-orphans
+stop-grafana:
+	docker-compose -f ./grafana/docker-compose.yml down --remove-orphans
