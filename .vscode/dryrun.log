@@ -1,0 +1,4 @@
+make: Entering directory `/Users/shunmugamv/Documents/work/repos/gitea_apis'
+docker-compose -f ./gocd/docker-compose.yaml up -d --remove-orphans
+make: Leaving directory `/Users/shunmugamv/Documents/work/repos/gitea_apis'
+ 

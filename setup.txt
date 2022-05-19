@@ -62,7 +62,7 @@ scrape_configs:
 
   - job_name: go-cd-server-exporter
     static_configs:
-      - targets: ["192.168.199.11:9100"] #change Ip to Go CD server VM IP
+      - targets: ["192.168.56.11:9100"] #change Ip to Go CD server VM IP
 
 docker run -p 9091:9090 -v pwd-path/prometheus.yaml:/etc/prometheus/prometheus.yml prom/prometheus
 
@@ -81,5 +81,5 @@ open localhost:3010 & add prometheus as datasource
 -------------------------------------------------------------------
 
 Curl command to encrypt password 
-curl 'http://192.168.199.11:8153/go/api/admin/encrypt' -u 'goadmin:goadmin' -H 'Accept: application/vnd.go.cd.v1+json' -H 'Content-Type: application/json' -X POST -d '{ "value": "admin%40123" }'
+curl 'http://192.168.56.11:8153/go/api/admin/encrypt' -u 'goadmin:goadmin' -H 'Accept: application/vnd.go.cd.v1+json' -H 'Content-Type: application/json' -X POST -d '{ "value": "admin%40123" }'
 

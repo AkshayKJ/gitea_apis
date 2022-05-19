@@ -26,4 +26,4 @@ GOCD_HEADER = {
     "accept": "application/vnd.go.cd.v4+json" 
 }
 
-GOCD_HOST= 'http://x.x.x.x:8153/'
+GOCD_HOST= 'http://192.168.56.11:8153/'

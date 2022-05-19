@@ -1,7 +1,5 @@
 import requests
 import config
-import templates
-import base64
 
 
 for i in range(2, 51):

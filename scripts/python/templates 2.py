@@ -14,7 +14,7 @@ pipelines:
                 plugin_configuration:
                     id: git-path
                 options:
-                    url: http://x.x.x.x:3000/admin123/{repo_name}.git
+                    url: http://192.168.56.1:3000/admin123/{repo_name}.git
                     username: admin123 # optional
                     shallow_clone: false # optional
                     path: 'microservice1'
