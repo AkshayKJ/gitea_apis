@@ -1,4 +1,4 @@
-FROM=1
+FROM=0
 LESS_THAN=51
 
 # gittea configs
