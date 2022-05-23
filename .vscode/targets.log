@@ -10,7 +10,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 make: *** No rule to make target `all'.  Stop.
 
 
-# Make data base, printed on Thu May 19 20:40:41 2022
+# Make data base, printed on Mon May 23 11:59:02 2022
 
 # Variables
 
@@ -45,7 +45,7 @@ VSCODE_VERBOSE_LOGGING = true
 # environment
 __CFBundleIdentifier = com.microsoft.VSCode
 # environment
-VSCODE_IPC_HOOK_EXTHOST = /var/folders/wf/43dcwf8913n0fmm75n_s2cbh0000gn/T/vscode-ipc-23ab75aa-95fa-41a1-a1a5-69de01a21095.sock
+VSCODE_IPC_HOOK_EXTHOST = /var/folders/wf/43dcwf8913n0fmm75n_s2cbh0000gn/T/vscode-ipc-15780463-d9b9-4955-bf5a-b844d030da07.sock
 # environment
 VSCODE_CWD = /Users/shunmugamv/Documents/work/repos/gitea_apis
 # environment
@@ -59,7 +59,7 @@ ELECTRON_RUN_AS_NODE = 1
 # default
 .FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
 # environment
-SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.KsridxnTKO/Listeners
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.zpDYosrZVD/Listeners
 # automatic
 %F = $(notdir $%)
 # environment
@@ -103,11 +103,11 @@ MAKE_VERSION := 3.81
 # environment
 USER = shunmugamv
 # makefile
-.DEFAULT_GOAL := clean-gocd-setup
+.DEFAULT_GOAL := clean-gocd-setup-1
 # default
 MAKECMDGOALS := all
 # environment
-TERM_SESSION_ID = w0t0p0:AAB7C72E-64C3-4985-9FB4-6EDC6018C971
+TERM_SESSION_ID = w0t0p0:5102C645-3788-4BBB-8D46-119D0616E286
 # environment
 LESS = -R
 # automatic
@@ -133,7 +133,7 @@ MFLAGS = -Rrqp
 # environment
 TERM_PROGRAM_VERSION = 3.4.15
 # environment
-XPC_SERVICE_NAME = application.com.microsoft.VSCode.3764177.3764183.A153490E-6C8F-4F07-88F0-172C97E5B469
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.3764177.3764183.F8498C9C-1E5F-41FC-A10D-B04682E9446B
 # environment
 LC_TERMINAL_VERSION = 3.4.15
 # automatic
@@ -141,7 +141,7 @@ LC_TERMINAL_VERSION = 3.4.15
 # automatic
 +F = $(notdir $+)
 # environment
-ITERM_SESSION_ID = w0t0p0:AAB7C72E-64C3-4985-9FB4-6EDC6018C971
+ITERM_SESSION_ID = w0t0p0:5102C645-3788-4BBB-8D46-119D0616E286
 # environment
 COLORFGBG = 15;0
 # environment
@@ -171,7 +171,7 @@ LANG = C
 # environment
 TERM = xterm-256color
 # environment
-VSCODE_PID = 990
+VSCODE_PID = 8342
 # variable set hash-table stats:
 # Load=79/1024=8%, Rehash=0, Collisions=4/103=4%
 
@@ -181,7 +181,7 @@ VSCODE_PID = 990
 
 # Directories
 
-# . (device 16777225, inode 3674942): 15 files, no impossibilities.
+# . (device 16777222, inode 3674942): 15 files, no impossibilities.
 
 # 15 files, no impossibilities in 1 directories.
 
@@ -191,19 +191,25 @@ VSCODE_PID = 990
 
 # Files
 
-start-grafana:
+clean-gocd-setup-1:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 34):
-	docker-compose -f ./grafana/docker-compose.yml up -d --remove-orphans
+#  commands to execute (from `Makefile', line 2):
+	echo "cleaning old certs..."
+	rm -rf ./gocd-1/roles/gocd_agent/gocd.example.com.crt
+	rm -rf ./gocd-1/roles/gocd_agent/gocd.example.com.key
+	rm -rf ./gocd-1/roles/gocd_server/gocd.example.com.crt
+	rm -rf ./gocd-1/roles/gocd_server/gocd.example.com.key
+	rm -rf ./gocd-1/roles/gocd_agent/files/id_rsa
+	rm -rf ./gocd-1/deploy_keys/id_rsa.pub
 	
 
 init-setup-gocd: clean-gocd-setup
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 12):
+#  commands to execute (from `Makefile', line 38):
 	sh ./gocd/cnf/generate_csr.sh
 	sh ./gocd/deploy_keys/generate_key.sh
 	mv id_rsa ./gocd/roles/gocd_agent/files/
@@ -214,8 +220,27 @@ stop-gocd:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 21):
+#  commands to execute (from `Makefile', line 47):
 	cd gocd && vagrant destroy -f && cd - 
+	
+
+init-setup-gocd-1: clean-gocd-setup
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 12):
+	sh ./gocd-1/cnf/generate_csr.sh
+	sh ./gocd-1/deploy_keys/generate_key.sh
+	mv id_rsa ./gocd-1/roles/gocd_agent/files/
+	mv id_rsa.pub ./gocd-1/deploy_keys/
+	
+
+stop-gocd-1:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 21):
+	cd gocd-1 && vagrant destroy -f && cd - 
 	
 
 # Not a target:
@@ -236,7 +261,7 @@ all:
 # Not a target:
 Makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-05-19 17:21:12
+#  Last modified 2022-05-19 23:35:07
 #  File has been updated.
 #  Successfully updated.
 # variable set hash-table stats:
@@ -246,15 +271,23 @@ start-gocd:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 18):
+#  commands to execute (from `Makefile', line 44):
 	cd gocd && vagrant up && cd -
+	
+
+start-gocd-1:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 18):
+	cd gocd-1 && vagrant up && cd -
 	
 
 stop-gittea:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 26):
+#  commands to execute (from `Makefile', line 55):
 	docker-compose -f ./gittea/docker-compose.yml down --remove-orphans
 	
 
@@ -262,7 +295,7 @@ stop-prom:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 31):
+#  commands to execute (from `Makefile', line 60):
 	docker-compose -f ./prometheus/docker-compose.yml down --remove-orphans
 	
 
@@ -276,31 +309,48 @@ start-gittea:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 24):
+#  commands to execute (from `Makefile', line 53):
 	docker-compose -f ./gittea/docker-compose.yml up -d --remove-orphans
 	
 
-stop-grafana:
+generate-gocd-encrypt-git-pass:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 36):
-	docker-compose -f ./grafana/docker-compose.yml down --remove-orphans
+#  commands to execute (from `Makefile', line 63):
+ 
+	curl 'http://192.168.56.11:8153/go/api/admin/encrypt' -u 'goadmin:goadmin' -H 'Accept: application/vnd.go.cd.v1+json' -H 'Content-Type: application/json' -X POST -d '{ "value": "gittea" }'
 	
 
 start-prom:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 29):
+#  commands to execute (from `Makefile', line 58):
 	docker-compose -f ./prometheus/docker-compose.yml up -d --remove-orphans
+	
+
+gocd-status:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 50):
+	cd gocd && vagrant status && cd - 
+	
+
+gocd-status-1:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 24):
+	cd gocd-1 && vagrant status && cd - 
 	
 
 clean-gocd-setup:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
-#  commands to execute (from `Makefile', line 2):
+#  commands to execute (from `Makefile', line 28):
 	echo "cleaning old certs..."
 	rm -rf ./gocd/roles/gocd_agent/gocd.example.com.crt
 	rm -rf ./gocd/roles/gocd_agent/gocd.example.com.key
@@ -311,7 +361,7 @@ clean-gocd-setup:
 	
 
 # files hash-table stats:
-# Load=14/1024=1%, Rehash=0, Collisions=0/27=0%
+# Load=19/1024=2%, Rehash=0, Collisions=0/33=0%
 # VPATH Search Paths
 
 # No `vpath' search paths.
@@ -323,7 +373,6 @@ clean-gocd-setup:
 # strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
 # strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
 
- 
-# Finished Make data base on Thu May 19 20:40:41 2022
+# Finished Make data base on Mon May 23 11:59:02 2022
 
  

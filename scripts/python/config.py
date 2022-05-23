@@ -1,5 +1,5 @@
-FROM=0
-LESS_THAN=51
+FROM=51
+LESS_THAN=101
 
 # gittea configs
 

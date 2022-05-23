@@ -1,5 +1,8 @@
 import requests
 import config
+from telnetlib import Telnet
+
+
 
 
 for i in range(config.FROM,config.LESS_THAN):
