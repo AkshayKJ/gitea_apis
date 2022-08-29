@@ -15,7 +15,7 @@ init-setup-gocd-1: clean-gocd-setup
 	mv id_rsa.pub ./gocd-1/deploy_keys/
 
 start-gocd-1:
-	cd gocd-1 && vagrant up && cd -
+	cd gocd-1 && vagrant up --provision && cd -
 
 stop-gocd-1:
 	cd gocd-1 && vagrant destroy -f && cd - 
@@ -41,7 +41,7 @@ init-setup-gocd: clean-gocd-setup
 	mv id_rsa.pub ./gocd/deploy_keys/
 
 start-gocd:
-	cd gocd && vagrant up && cd -
+	cd gocd && vagrant up --provision && cd -
 
 stop-gocd:
 	cd gocd && vagrant destroy -f && cd - 

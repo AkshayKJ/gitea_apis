@@ -6,7 +6,7 @@ import uuid
 
 
 for i in range(config.FROM,config.LESS_THAN):
-    FILENAME = f'microservice-3/src/scratch.txt'
+    FILENAME = f'change.txt'
     REPO_NAME = f'repo-{i}'
     URL = f"{config.HOST}/api/v1/repos/{config.USER_NAME}/{REPO_NAME}/contents/{FILENAME}"
     file_response = requests.get(url=URL, headers=config.HEADER)

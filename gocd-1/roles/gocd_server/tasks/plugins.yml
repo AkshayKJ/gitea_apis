@@ -8,3 +8,13 @@
     owner: go
     group: go
   notify: "restart gocd server"
+
+- name: Install gocd s3 artifact plugin
+  become: yes
+  copy:
+    src: "../../../../s3-artifact-plugin-1.0.0-12.jar"
+    dest: "/data/var-lib-go-server/plugins/external"
+    mode: 0644
+    owner: go
+    group: go
+  notify: "restart gocd server"

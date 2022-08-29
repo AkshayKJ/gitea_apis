@@ -127,3 +127,6 @@
     owner: go
     group: go
     mode: 0600
+  
+- name: download and install node exporter 
+  include_tasks: node_exporter.yaml

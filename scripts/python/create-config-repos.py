@@ -27,4 +27,4 @@ for i in range(config.FROM,config.LESS_THAN):
         }]
     }
     r = requests.post(url=URL, json=payload, headers=config.GOCD_HEADER)
-    print(f"create config repo 'repo-{i}': ", r.status_code)
+    print(f"create config repo 'repo-{i}': ", r.status_code, r.json())

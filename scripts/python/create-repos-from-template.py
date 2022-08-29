@@ -1,7 +1,7 @@
 import requests
 import config
 
-TEMLPATE_NAME='sample-template-repo'
+TEMLPATE_NAME='artifact-template-repo'
 
 for i in range(config.FROM,config.LESS_THAN):
     URL = f"{config.HOST}/api/v1/repos/{config.USER_NAME}/{TEMLPATE_NAME}/generate"
