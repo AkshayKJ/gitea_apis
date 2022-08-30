@@ -8,7 +8,7 @@ clean-gocd-setup-1:
 	rm -rf ./gocd-1/deploy_keys/id_rsa.pub
 
 
-init-setup-gocd-1: clean-gocd-setup
+init-setup-gocd-1: clean-gocd-setup-1
 	sh ./gocd-1/cnf/generate_csr.sh
 	sh ./gocd-1/deploy_keys/generate_key.sh
 	mv id_rsa ./gocd-1/roles/gocd_agent/files/

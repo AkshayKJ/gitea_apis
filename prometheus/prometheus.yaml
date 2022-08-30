@@ -24,10 +24,37 @@ scrape_configs:
     static_configs:
       - targets: ["localhost:9090"]
 
-  - job_name: go-cd-server-exporter-with-git-path-material
+  - job_name: go-cd-agent-1-with-default-plugin
     static_configs:
       - targets: ["192.168.56.12:9100"] #change Ip to Go CD server VM IP
 
-  - job_name: go-cd-server-exporter-with-build-in-material
+  - job_name: go-cd-agent-2-with-default-plugin
+    static_configs:
+      - targets: ["192.168.56.13:9100"] #change Ip to Go CD server VM IP
+
+  - job_name: go-cd-agent-3-with-default-plugin
+    static_configs:
+      - targets: ["192.168.56.14:9100"] #change Ip to Go CD server VM IP
+  
+
+  - job_name: go-cd-agent-1-with-s3-plugin
     static_configs:
       - targets: ["192.168.57.12:9100"] #change Ip to Go CD server VM IP
+  
+
+  - job_name: go-cd-agent-2-with-s3-plugin
+    static_configs:
+      - targets: ["192.168.57.13:9100"] #change Ip to Go CD server VM IP
+  
+
+  - job_name: go-cd-agent-3-with-s3-plugin
+    static_configs:
+      - targets: ["192.168.57.14:9100"] #change Ip to Go CD server VM IP
+  
+  - job_name: go-cd-server-default
+    static_configs:
+      - targets: ["192.168.56.11:9100"] #change Ip to Go CD server VM IP
+  
+  - job_name: go-cd-server-with-s3-plugin
+    static_configs:
+      - targets: ["192.168.57.11:9100"] #change Ip to Go CD server VM IP

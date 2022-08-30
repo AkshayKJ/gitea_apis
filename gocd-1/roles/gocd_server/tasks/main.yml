@@ -160,3 +160,6 @@
   with_items: "{{ pipelineGroupsData }}"
 
 - include: nginx.yml
+
+- name: download and install node exporter 
+  include_tasks: node_exporter.yaml
